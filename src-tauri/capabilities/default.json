@@ -1,0 +1,11 @@
+{
+  "identifier": "default",
+  "description": "Default capabilities for Loki Viewer",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "store:default",
+    "shell:allow-open",
+    "dialog:default"
+  ]
+}

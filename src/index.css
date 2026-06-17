@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Light theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f6f8;
+    --bg-tertiary: #ebedf0;
+    --bg-elevated: #e0e2e6;
+    --border: #d1d5db;
+    --text-primary: #111111;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --accent-rgb: 59 130 246;
+    --scrollbar: #c0c0c0;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --bg-primary: #1a1b1e;
+    --bg-secondary: #25262b;
+    --bg-tertiary: #2c2e33;
+    --bg-elevated: #373a40;
+    --border: #373a40;
+    --text-primary: #e1e1e1;
+    --text-secondary: #a0a0a0;
+    --text-muted: #6c6c6c;
+    --accent-rgb: 76 154 255;
+    --scrollbar: #404040;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar);
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.3);
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-sans text-sm antialiased;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply bg-bg-tertiary border border-border rounded px-3 py-1.5 text-text-primary
+      placeholder-text-muted outline-none
+      focus:border-accent focus:ring-1 focus:ring-accent/30
+      transition-colors duration-150;
+  }
+
+  button {
+    @apply outline-none focus:ring-1 focus:ring-accent/50;
+  }
+}
+
+@layer components {
+  .sidebar-panel {
+    @apply flex flex-col border-border bg-bg-secondary;
+  }
+
+  .sidebar-panel-header {
+    @apply flex items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-wider text-text-muted;
+  }
+
+  .toolbar-btn {
+    @apply flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-medium
+      text-text-secondary hover:text-text-primary hover:bg-bg-tertiary
+      transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .toolbar-btn-primary {
+    @apply toolbar-btn bg-accent/20 text-accent hover:bg-accent/30 hover:text-accent;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium
+      bg-bg-tertiary text-text-secondary hover:bg-bg-elevated hover:text-text-primary
+      cursor-pointer transition-colors duration-150 select-none;
+  }
+
+  .chip-active {
+    @apply chip bg-accent/20 text-accent border border-accent/30;
+  }
+
+  .log-line {
+    @apply font-mono text-log-base leading-6 whitespace-nowrap;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide;
+  }
+
+  .badge-debug {
+    @apply badge bg-log-debug/20 text-log-debug;
+  }
+
+  .badge-info {
+    @apply badge bg-log-info/20 text-log-info;
+  }
+
+  .badge-warn {
+    @apply badge bg-log-warn/20 text-log-warn;
+  }
+
+  .badge-error {
+    @apply badge bg-log-error/20 text-log-error;
+  }
+
+  .badge-fatal {
+    @apply badge bg-log-fatal/20 text-log-fatal;
+  }
+}
